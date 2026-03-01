@@ -17,6 +17,7 @@ const colors = [
     'grey',
     '',
 ]
+
 function getResult(cookies){
     for(const cookie of cookies){
         const [name, value] = cookie.split('=')
@@ -27,7 +28,6 @@ function getResult(cookies){
     return'6'.repeat(450)
 }
 
-
 const colorsFromCookie = getResult(document.cookie.split('; '))
 for (let i = 0; i < 450; i += 1) {
     let cell = document.createElement('div')
@@ -35,6 +35,7 @@ for (let i = 0; i < 450; i += 1) {
     field.appendChild(cell)
     cell.style.backgroundColor = colors[+colorsFromCookie[i]]
 } 
+
 let cells = document.querySelectorAll('.cell')
 setInterval(function(){
     
@@ -46,38 +47,49 @@ setInterval(function(){
     }
     document.cookie = `result=${result}; max-age=1000000`
 },10000)
+
 document.addEventListener("mousedown",function(){
     is_clicked = true
 })
+
 document.addEventListener("mouseup",function(){
     is_clicked = false
 })
+
 field.addEventListener('mousemove',function(e){
     if(e.target.classList.contains("cell") && is_clicked){
         e.target.style.backgroundColor = dataColor
     }    
 })
+
 field.addEventListener('click',function(e){
     e.target.style.backgroundColor = dataColor
 })
+
 red.addEventListener("click",function(){
     dataColor = "red"
 })
+
 green.addEventListener("click",function(){
     dataColor = "green"
 })
+
 yellow.addEventListener("click",function(){
     dataColor = "yellow"
 })
+
 white.addEventListener("click",function(){
     dataColor = "white"
 })
+
 black.addEventListener("click",function(){
     dataColor = "black"
 })
+
 ieraser.addEventListener("click",function(){
     dataColor = "grey"
 })
+
 clearAll.addEventListener("click",function(){
     dataColor = "grey"
     for(const cell of cells){
